@@ -26,5 +26,6 @@ def home(request):
     result = x_list
     # 以下グラフ用の処理
     utils.create_graph(x_list, t_list)
-  return render(request, 'differential/home.html', {'result': result})
+    graph = utils.get_image()
+  return render(request, 'differential/home.html', {'result': result, 'graph': graph})
 
