@@ -25,6 +25,8 @@
 {{  result }}
 <br>
 <img src="data:image/png;base64, {{ graph1 | safe }} " alt="">
-<img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
+{% if graph2 %}
+  <img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
+{% endif %}
 
 {% endblock content %}
