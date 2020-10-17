@@ -5,16 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>微分方程式シミュレーター</title>
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
 
   <header class="header">
-    hey
+    <nav class="header__nav">
+      <div class="container">
+        <div class="header__right">
+          <h1 class="header__title"><a href="">微分方程式シミュレーター</a></h1>
+        </div>
+        <div class="header__left">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="#">使い方</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
+  <div style="height: 60px;"></div>
 
   {% block content %}
   {% endblock content %}
   
+  <footer class="footer">
+    <div class="container">
+      <p>created by Masato</p>
+    </div>
+  </footer>
+
 </body>
 </html>
