@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-hello
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <p>Input equation</p>
+  <textarea name="equation" id="" cols="100" rows="5" placeholder="dx/dt="></textarea>
+
+  <p>Input initial value of x</p>
+  <input type="text" name="x">
+
+  <p>Input initial value of dt</p>
+  <input type="text" name="dt">
+
+  <p>Input initial value of n</p>
+  <input type="text" name="n">
+
+  <input type="submit">
+</form>
+
+{{  result }}
 {% endblock content %}
