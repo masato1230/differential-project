@@ -5,9 +5,13 @@ import matplotlib.pyplot as plt
 import base64
 
 
-def next_x(equation1,x,dt):
+def next_x(equation1,x,y,dt):
   x += eval(equation1) * dt
   return x
+
+def next_y(equation2,x,y,dt):
+  y += eval(equation2) * dt
+  return y
 
 def create_graph(x_list,t_list):
   plt.cla()

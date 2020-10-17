@@ -5,10 +5,13 @@
   {% csrf_token %}
 
   <p>Input equation</p>
-  <textarea name="equation" id="" cols="100" rows="5" placeholder="dx/dt="></textarea>
+  <textarea name="equation1" id="" cols="100" rows="5" placeholder="dx/dt="></textarea>
+  <textarea name="equation2" id="" cols="100" rows="5" placeholder="dy/dt="></textarea>
 
   <p>Input initial value of x</p>
   <input type="text" name="x">
+  <p>Input initial value of y</p>
+  <input type="text" name="y">
 
   <p>Input initial value of dt</p>
   <input type="text" name="dt">
@@ -21,5 +24,7 @@
 
 {{  result }}
 <br>
-<img src="data:image/png;base64, {{ graph | safe }} " alt="">
+<img src="data:image/png;base64, {{ graph1 | safe }} " alt="">
+<img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
+
 {% endblock content %}
