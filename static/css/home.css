@@ -1,0 +1,45 @@
+/* 全体設定　 */
+.container {
+  width: 90%;
+}
+
+.red {
+  color: red;
+}
+
+/* top */
+.top {
+  height: 660px;
+  background-image: url('/static/image/home.jpg');
+  background-size: cover;
+  padding: 50px;
+}
+
+.top .container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.top__input-block {
+  margin-bottom: 30px;
+}
+
+.top__subtitle {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.top__input-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.top__label {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

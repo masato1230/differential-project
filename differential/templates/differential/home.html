@@ -1,32 +1,76 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+  {% static 'css/home.css' %}
+{% endblock customcss %}
+
 
 {% block content %}
-<form action="" method="POST">
-  {% csrf_token %}
 
-  <p>Input equation</p>
-  <textarea name="equation1" id="" cols="100" rows="5" placeholder="dx/dt="></textarea>
-  <textarea name="equation2" id="" cols="100" rows="5" placeholder="dy/dt="></textarea>
+{% if graph1 %}
+  <section class="result">
+    <div class="container">
+      <h2>左がxの結果、右がyの結果</h2>
+      <img src="data:image/png;base64, {{ graph1 | safe }} " alt="">
+      {% if graph2 %}
+        <img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
 
-  <p>Input initial value of x</p>
-  <input type="text" name="x">
-  <p>Input initial value of y</p>
-  <input type="text" name="y">
+<section class="top">
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      
+      <div class="top__input-block">
+        <h2 class="top__subtitle">xについての設定<span class="red">(必須)</span></h2>
+        <p class="top__label">微分方程式を入力してください(dx/dt)</p>
+        <div class="top__input-row">
+          <p>dx/dt = </p>
+          <textarea name="equation1" id="" cols="100" rows="3" placeholder="dx/dt=">x+t</textarea>
+        </div>
+        <div class="top__input-row">
+          <p class="top__label">xの初期値を入力してください</p>
+          <input type="text" name="x" value="1">
+        </div>
+      </div>
+      <hr>
+      
+      <div class="top__input-block">
+        <h2 class="top__subtitle">yについての設定</h2>
+        <p class="top__label">微分方程式を入力してください(dy/dt)</p>
+        <div class="top__input-row">
+          <p>dy/dt = </p>
+          <textarea name="equation2" id="" cols="100" rows="3" placeholder="dy/dt=">((x/y)**0.5)*(-3)</textarea>
+        </div>
+        <div class="top__input-row">
+          <p class="top__label">yの初期値を入力してください</p>
+          <input type="text" name="y" value="1">
+        </div>
+      </div>
+      <hr>
 
-  <p>Input initial value of dt</p>
-  <input type="text" name="dt">
-
-  <p>Input initial value of n</p>
-  <input type="text" name="n">
-
-  <input type="submit">
-</form>
+      <div class="top__input-block">
+        <h2 class="top__subtitle">シミュレーション設定</h2>
+        <div class="top__input-row">
+          <p class="top__label">dtを設定してください(dtはシミュレーションの刻みの幅です。)</p>
+          <input type="text" name="dt" value="0.01">
+        </div>
+        <div class="top__input-row">
+          <p class="top__label">nを設定してください(nはシミュレーションの回数です。)</p>
+          <input type="text" name="n" value="1000">
+        </div>
+      </div>
+    
+    
+      <input type="submit" value="スタート">
+    </form>
+  </div>
+</section>
 
 {{  result }}
-<br>
-<img src="data:image/png;base64, {{ graph1 | safe }} " alt="">
-{% if graph2 %}
-  <img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
-{% endif %}
 
 {% endblock content %}

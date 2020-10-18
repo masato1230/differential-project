@@ -25,16 +25,14 @@ def home(request):
       y_list = [y]
       t_list = [0]
       for n in range(0,n):
-        x = utils.next_x(equation1, x, y, dt)
-        y = utils.next_x(equation2, x, y, dt)
+        x = utils.next_x(equation1, x, y, dt, t)
+        y = utils.next_y(equation2, x, y, dt, t)
         t += dt
 
         x_list.append(x)
         y_list.append(y)
         t_list.append(t)
-        print(x)
 
-      result = y_list
       # 以下グラフ用の処理
       utils.create_graph(x_list, t_list)
       graph1 = utils.get_image()
@@ -55,18 +53,16 @@ def home(request):
       x_list = [x]
       t_list = [0]
       for n in range(0,n):
-        x = utils.next_x(equation1, x, y, dt)
+        x = utils.next_x(equation1, x, y, dt, t)
         t += dt
 
         x_list.append(x)
         t_list.append(t)
-        print(x)
 
-      result = x_list
       # 以下グラフ用の処理
       utils.create_graph(x_list, t_list)
       graph1 = utils.get_image()
-  
+  result = str(x)+ " ," + str(y)
   return render(request, 'differential/home.html', {'result': result, 'graph1': graph1, 'graph2': graph2})
 
 
