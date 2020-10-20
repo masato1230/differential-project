@@ -11,12 +11,21 @@
 {% if graph1 %}
   <section class="result">
     <div class="container">
-      <h2>左がxの結果、右がyの結果</h2>
-      <img src="data:image/png;base64, {{ graph1 | safe }} " alt="">
-      {% if graph2 %}
-        <img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
-      {% endif %}
+      <h2 class="result__title">結果</h2>
+      <div class="result__wrapper">
+        <div class="result__image-wrapper">
+          <img src="data:image/png;base64, {{ graph1 | safe }} " alt="">
+          <p class="result__description">xの結果</p>
+        </div>
+        {% if graph2 %}
+          <div class="result__image-wrapper">
+            <img src="data:image/png;base64, {{ graph2 | safe }} " alt="">
+            <p class="result__description">yの結果</p>
+          </div>
+        {% endif %}
+      </div>
     </div>
+    <p class="result__result">最後の値：　{{ result }}</p>
   </section>
 {% endif %}
 
@@ -26,6 +35,9 @@
       {% csrf_token %}
       
       <div class="top__input-block">
+        {% if error_message %}
+          <h2 class="top__subtitle red">{{ error_message }}</h2>
+        {% endif %}
         <h2 class="top__subtitle">xについての設定<span class="red">(必須)</span></h2>
         <p class="top__label">微分方程式を入力してください(dx/dt)</p>
         <div class="top__input-row">
@@ -37,7 +49,7 @@
           <input type="text" name="x" value="1">
         </div>
       </div>
-      <hr>
+      <hr color="black">
       
       <div class="top__input-block">
         <h2 class="top__subtitle">yについての設定</h2>
@@ -51,7 +63,7 @@
           <input type="text" name="y" value="1">
         </div>
       </div>
-      <hr>
+      <hr color="black">
 
       <div class="top__input-block">
         <h2 class="top__subtitle">シミュレーション設定</h2>
@@ -60,17 +72,16 @@
           <input type="text" name="dt" value="0.01">
         </div>
         <div class="top__input-row">
-          <p class="top__label">nを設定してください(nはシミュレーションの回数です。)</p>
+          <p class="top__label">nを設定してください(nはシミュレーションの回数です。,5000以下でお願いします。)</p>
           <input type="text" name="n" value="1000">
         </div>
       </div>
     
-    
-      <input type="submit" value="スタート">
+      <div class="top__button-wrapper">
+        <button class="top__start-button" type="submit">スタート</button>
+      </div>
     </form>
   </div>
 </section>
-
-{{  result }}
 
 {% endblock content %}
