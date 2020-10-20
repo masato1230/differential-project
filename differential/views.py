@@ -51,6 +51,8 @@ def home(request):
         error_message = "n,dtは整数で入力してください"
       except NameError:
         error_message = "式の入力方法が間違っています。詳しくは、「使い方」を参照してください。"
+      except TypeError:
+        error_message = "式の入力方法が間違っています。詳しくは、「使い方」を参照してください。"
     
     else:
       try:
@@ -84,6 +86,8 @@ def home(request):
       except OverflowError:
         error_message = "計算結果が大きすぎます。nかdtの値を小さくしてください。"
       except NameError:
+        error_message = "式の入力方法が間違っています。詳しくは、「使い方」を参照してください。"
+      except TypeError:
         error_message = "式の入力方法が間違っています。詳しくは、「使い方」を参照してください。"
   result = "(x,y) = (" + str(x)+ " ," + str(y) + ")"
   return render(request, 'differential/home.html', {'result': result, 'graph1': graph1, 'graph2': graph2, 'error_message': error_message})

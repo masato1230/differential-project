@@ -98,3 +98,9 @@ input {
   vertical-align: middle;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1076px) {
+  .top {
+    height: 1000px;
+  }
+}
